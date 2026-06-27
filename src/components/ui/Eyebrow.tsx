@@ -1,9 +1,7 @@
 import { ReactNode } from "react";
 
 /**
- * The site's signature label element — brackets instead of pills/numbered
- * badges, reinforcing the dev-brand identity. Used for section eyebrows,
- * status labels, and category tags.
+ * Small uppercase mono label used for section tags and status indicators.
  */
 export default function Eyebrow({
   children,
@@ -22,7 +20,7 @@ export default function Eyebrow({
 
   return (
     <span
-      className={`font-mono-tight inline-flex items-center gap-2 text-xs font-medium uppercase ${toneClasses[tone]}`}
+      className={`font-mono-tight inline-flex items-center gap-2 text-xs font-medium uppercase tracking-wide ${toneClasses[tone]}`}
     >
       {pulse && (
         <span className="relative flex h-1.5 w-1.5">
@@ -30,9 +28,7 @@ export default function Eyebrow({
           <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-[var(--accent-500)]" />
         </span>
       )}
-      <span>
-        [&nbsp;{children}&nbsp;]
-      </span>
+      <span>{children}</span>
     </span>
   );
 }

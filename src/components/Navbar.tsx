@@ -1,18 +1,26 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
+import { apps } from "@/lib/site-config";
 
 const links = [
-  { href: "/", label: "Home" },
-  { href: "/#apps", label: "Apps" },
+  { href: "/apps", label: "Apps" },
   { href: "/blog", label: "Blog" },
   { href: "/#about", label: "About" },
+  { href: "/contact", label: "Contact" },
 ];
 
 export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+
+  const currentApp = apps.find((app) => pathname?.startsWith(`/${app.slug}`));
+  const cta = currentApp && currentApp.playStoreUrl
+    ? { label: `Get ${currentApp.name}`, href: currentApp.playStoreUrl, external: true }
+    : { label: "Explore Apps", href: "/apps", external: false };
 
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-[var(--border)] bg-white/90 backdrop-blur-md">
@@ -36,8 +44,13 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
-            <Button href="/nust-one" size="md">
-              Get NUST One
+            <Button
+              href={cta.href}
+              size="md"
+              target={cta.external ? "_blank" : undefined}
+              rel={cta.external ? "noopener noreferrer" : undefined}
+            >
+              {cta.label}
             </Button>
           </div>
 
@@ -72,11 +85,13 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/nust-one"
+            href={cta.href}
+            target={cta.external ? "_blank" : undefined}
+            rel={cta.external ? "noopener noreferrer" : undefined}
             onClick={() => setIsMobileMenuOpen(false)}
             className="block rounded-[var(--radius-sm)] px-3 py-2 text-base font-medium text-[var(--accent-600)]"
           >
-            Get NUST One
+            {cta.label}
           </Link>
         </div>
       </div>

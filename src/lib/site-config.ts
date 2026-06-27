@@ -19,13 +19,14 @@ export type AppInfo = {
   tagline: string;
   description: string;
   category: string;
-  playStoreUrl: string;
+  playStoreUrl?: string;
   rating: number;
   ratingCount: number;
   installs: string; // human-readable, e.g. "100+"
   status: "live" | "coming-soon";
-  // Paths under /public. heroScreenshot is used on the home hero + app
-  // page hero; screenshots is the full gallery shown on the app page.
+  // Paths under /public. icon is the square app icon (Play Store style).
+  // Optional for coming-soon apps that don't have one yet.
+  icon?: string;
   heroScreenshot: string;
   screenshots: string[];
   features: { title: string; description: string }[];
@@ -48,6 +49,7 @@ export const apps: AppInfo[] = [
     ratingCount: 12,
     installs: "100+",
     status: "live",
+    icon: "/icons/nust-one.png",
     heroScreenshot: "/screenshots/nust-one-1.png",
     screenshots: [
       "/screenshots/nust-one-1.png",
@@ -95,5 +97,37 @@ export const apps: AppInfo[] = [
           "Yes. NUST One is free to download and use, with no subscription required.",
       },
     ],
+  },
+  {
+    slug: "batchbook",
+    name: "BatchBook",
+    tagline: "Smart batch management for students.",
+    description:
+      "BatchBook helps student batches organize class info, announcements, and shared resources in one place.",
+    category: "Productivity",
+    rating: 0,
+    ratingCount: 0,
+    installs: "—",
+    status: "coming-soon",
+    heroScreenshot: "/screenshots/batchbook-1.png",
+    screenshots: [],
+    features: [],
+    faqs: [],
+  },
+  {
+    slug: "gpa-calculator",
+    name: "GPA Calculator",
+    tagline: "Calculate, analyze, and improve your GPA.",
+    description:
+      "A simple, accurate GPA calculator built for university grading systems, with semester-by-semester tracking.",
+    category: "Education",
+    rating: 0,
+    ratingCount: 0,
+    installs: "—",
+    status: "coming-soon",
+    heroScreenshot: "/screenshots/gpa-calculator-1.png",
+    screenshots: [],
+    features: [],
+    faqs: [],
   },
 ];

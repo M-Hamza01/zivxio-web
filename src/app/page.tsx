@@ -6,7 +6,7 @@ import Eyebrow from "@/components/ui/Eyebrow";
 import PhoneFrame from "@/components/ui/PhoneFrame";
 import TypewriterText from "@/components/ui/TypewriterText";
 import AppCard from "@/components/AppCard";
-import { apps } from "@/lib/site-config";
+import { apps, services } from "@/lib/site-config";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -74,8 +74,41 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* 3. Vision */}
-      <Section id="about" tone="light" className="py-16 md:py-20">
+      {/* 3. Services teaser */}
+      <Section tone="light" className="py-16 md:py-20">
+        <Container className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div>
+            <Eyebrow>services</Eyebrow>
+            <h2 className="text-3xl font-bold text-[var(--navy-900)] mt-3 mb-5">
+              Need an app or website built?
+            </h2>
+            <p className="text-[var(--text-secondary)] text-lg leading-relaxed mb-8">
+              Beyond our own products, we take on select client work —
+              mobile apps, landing pages, and UI/UX design. Same care and
+              attention to detail as everything we ship ourselves.
+            </p>
+            <Button href="/services" variant="dark" size="lg">
+              View services
+            </Button>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {services.map((service) => (
+              <div key={service.slug} className="rounded-[var(--radius-lg)] border border-[var(--border)] p-5">
+                <p className="font-semibold text-[var(--navy-900)] text-sm mb-1">
+                  {service.title}
+                </p>
+                <p className="text-[var(--text-tertiary)] text-xs leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* 4. Vision */}
+      <Section id="about" tone="surface" className="py-16 md:py-20">
         <Container className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
           <div>
             <Eyebrow>about zivxio</Eyebrow>

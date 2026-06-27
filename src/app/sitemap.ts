@@ -1,8 +1,9 @@
 import { MetadataRoute } from "next";
 import { siteConfig, apps } from "@/lib/site-config";
+import { getAllPostsMeta } from "@/lib/blog";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const staticRoutes = ["", "/apps", "/blog", "/privacy", "/contact"].map((path) => ({
+  const staticRoutes = ["", "/apps", "/services", "/blog", "/privacy", "/contact"].map((path) => ({
     url: `${siteConfig.siteUrl}${path}`,
     lastModified: new Date(),
   }));
@@ -12,5 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
   }));
 
-  return [...staticRoutes, ...appRoutes];
+  const postRoutes = getAllPostsMeta().map((post) => ({
+    url: `${siteConfig.siteUrl}/blog/${post.slug}`,
+    lastModified: new Date(post.date),
+  }));
+
+  return [...staticRoutes, ...appRoutes, ...postRoutes];
 }

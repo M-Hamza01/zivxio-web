@@ -10,8 +10,54 @@ export const siteConfig = {
   email: "zivxio.app@gmail.com",
   twitter: "", // add handle if/when you have one, e.g. "@zivxio"
   github: "", // optional
+  fiverrUrl: "", // add your Fiverr profile URL here once ready, e.g. "https://fiverr.com/yourprofile"
   founded: "2024",
 };
+
+export type ServiceInfo = {
+  slug: string;
+  title: string;
+  description: string;
+  deliverables: string[];
+};
+
+// Placeholder offerings — edit titles/descriptions/deliverables to match
+// what you actually want to offer before this goes live.
+export const services: ServiceInfo[] = [
+  {
+    slug: "mobile-app-development",
+    title: "Mobile App Development",
+    description:
+      "End-to-end Android app development — from idea to a published, maintained product.",
+    deliverables: [
+      "Native Android app",
+      "Play Store listing setup",
+      "Post-launch bug fixes",
+    ],
+  },
+  {
+    slug: "web-landing-pages",
+    title: "Web & Landing Pages",
+    description:
+      "Fast, modern websites and landing pages built with Next.js — for products, portfolios, or small businesses.",
+    deliverables: [
+      "Responsive Next.js website",
+      "SEO-ready structure",
+      "Deployment support",
+    ],
+  },
+  {
+    slug: "ui-ux-design",
+    title: "UI/UX Design",
+    description:
+      "Clean, purposeful interface design for mobile and web — wireframes through polished UI.",
+    deliverables: [
+      "Wireframes & prototypes",
+      "Design system / style guide",
+      "Design file handoff",
+    ],
+  },
+];
 
 export type AppInfo = {
   slug: string;

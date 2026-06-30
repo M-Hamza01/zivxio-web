@@ -4,8 +4,8 @@ type Variant = "raised" | "flat" | "dashed";
 
 const variants: Record<Variant, string> = {
   raised:
-    "bg-white border border-[var(--border)] hover:border-[var(--navy-900)]/20 transition-colors",
-  flat: "bg-[var(--surface)]",
+    "bg-white border border-[var(--border)] hover:border-[var(--navy-900)]/20 transition-colors card-lift",
+  flat: "bg-[var(--surface)] card-lift",
   dashed: "bg-transparent border border-dashed border-[var(--border)]",
 };
 

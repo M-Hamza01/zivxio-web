@@ -56,6 +56,40 @@ h1, h2, h3, h4 {
   letter-spacing: 0.02em;
 }
 
+/* ─── Mount fade ─────────────────────────────────────────────────── */
+@keyframes page-fade-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+main {
+  animation: page-fade-in 0.35s ease both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main { animation: none; }
+}
+
+/* ─── Dark hero dot-grid texture ─────────────────────────────────── */
+.hero-texture {
+  background-image: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.07) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
+}
+
+/* ─── Card hover lift ────────────────────────────────────────────── */
+.card-lift {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-lift:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px -8px rgba(11, 18, 32, 0.14);
+}
+
 /* Blog post markdown content */
 .blog-content h2 {
   font-family: var(--font-display);

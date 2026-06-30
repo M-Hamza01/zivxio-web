@@ -3,6 +3,7 @@ import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
 import Eyebrow from "@/components/ui/Eyebrow";
+import RevealOnScroll from "@/components/ui/RevealOnScroll";
 import ServiceCard from "@/components/ServiceCard";
 import { services, siteConfig } from "@/lib/site-config";
 
@@ -32,8 +33,10 @@ export default function Services() {
       <Section tone="surface" className="py-16 md:py-20">
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {services.map((service) => (
-              <ServiceCard key={service.slug} service={service} />
+            {services.map((service, i) => (
+              <RevealOnScroll key={service.slug} delay={i * 100}>
+                <ServiceCard service={service} />
+              </RevealOnScroll>
             ))}
           </div>
         </Container>

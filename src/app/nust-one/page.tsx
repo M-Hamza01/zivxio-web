@@ -7,6 +7,8 @@ import Card from "@/components/ui/Card";
 import Eyebrow from "@/components/ui/Eyebrow";
 import ScreenshotStrip from "@/components/ui/ScreenshotStrip";
 import ShareButton from "@/components/ui/ShareButton";
+import RevealOnScroll from "@/components/ui/RevealOnScroll";
+import CountUp from "@/components/ui/CountUp";
 import SoftwareAppJsonLd from "@/components/seo/SoftwareAppJsonLd";
 import FaqJsonLd from "@/components/seo/FaqJsonLd";
 import { apps, siteConfig } from "@/lib/site-config";
@@ -57,30 +59,36 @@ export default function NustOne() {
               </p>
 
               <div className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-6">
-                <div>
-                  <p className="font-semibold text-[var(--navy-900)]">
-                    {app.rating.toFixed(1)}★
-                  </p>
-                  <p className="text-xs text-[var(--text-tertiary)]">
-                    {app.ratingCount} reviews
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-[var(--navy-900)]">
-                    {app.installs}
-                  </p>
-                  <p className="text-xs text-[var(--text-tertiary)]">
-                    Downloads
-                  </p>
-                </div>
-                <div>
-                  <p className="font-semibold text-[var(--navy-900)]">
-                    {app.category}
-                  </p>
-                  <p className="text-xs text-[var(--text-tertiary)]">
-                    Category
-                  </p>
-                </div>
+                <RevealOnScroll delay={0}>
+                  <div>
+                    <p className="font-semibold text-[var(--navy-900)]">
+                      <CountUp end={app.rating} decimals={1} suffix="★" />
+                    </p>
+                    <p className="text-xs text-[var(--text-tertiary)]">
+                      {app.ratingCount} reviews
+                    </p>
+                  </div>
+                </RevealOnScroll>
+                <RevealOnScroll delay={80}>
+                  <div>
+                    <p className="font-semibold text-[var(--navy-900)]">
+                      <CountUp end={100} suffix="+" />
+                    </p>
+                    <p className="text-xs text-[var(--text-tertiary)]">
+                      Downloads
+                    </p>
+                  </div>
+                </RevealOnScroll>
+                <RevealOnScroll delay={160}>
+                  <div>
+                    <p className="font-semibold text-[var(--navy-900)]">
+                      {app.category}
+                    </p>
+                    <p className="text-xs text-[var(--text-tertiary)]">
+                      Category
+                    </p>
+                  </div>
+                </RevealOnScroll>
               </div>
 
               <div className="flex flex-wrap items-center gap-6">
@@ -114,15 +122,17 @@ export default function NustOne() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {app.features.map((feature) => (
-              <Card key={feature.title} variant="raised">
-                <h3 className="text-lg font-bold text-[var(--navy-900)] mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-[var(--text-secondary)] leading-relaxed text-sm">
-                  {feature.description}
-                </p>
-              </Card>
+            {app.features.map((feature, i) => (
+              <RevealOnScroll key={feature.title} delay={i * 100}>
+                <Card variant="raised">
+                  <h3 className="text-lg font-bold text-[var(--navy-900)] mb-3">
+                    {feature.title}
+                  </h3>
+                  <p className="text-[var(--text-secondary)] leading-relaxed text-sm">
+                    {feature.description}
+                  </p>
+                </Card>
+              </RevealOnScroll>
             ))}
           </div>
         </Container>

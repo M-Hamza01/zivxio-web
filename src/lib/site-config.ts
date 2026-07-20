@@ -4,14 +4,14 @@
 
 export const siteConfig = {
   name: "ZivXio",
-  siteUrl: "https://zivxio.com", // TODO: replace with real domain before launch
+  siteUrl: "https://zivxio.vercel.app", // TODO: replace with real domain before launch
   description:
-    "ZivXio is an independent software studio building useful, reliable mobile apps for students and everyday productivity.",
+    "ZivXio is a software studio building useful, reliable mobile apps for students and everyday productivity.",
   email: "zivxio.app@gmail.com",
   twitter: "", // add handle if/when you have one, e.g. "@zivxio"
   github: "", // optional
-  fiverrUrl: "", // add your Fiverr profile URL here once ready, e.g. "https://fiverr.com/yourprofile"
-  founded: "2024",
+  fiverrUrl: "https://fiverr.com/m__h_a_m_z_a",
+  founded: "2026",
 };
 
 export type ServiceInfo = {
@@ -21,8 +21,6 @@ export type ServiceInfo = {
   deliverables: string[];
 };
 
-// Placeholder offerings — edit titles/descriptions/deliverables to match
-// what you actually want to offer before this goes live.
 export const services: ServiceInfo[] = [
   {
     slug: "mobile-app-development",
@@ -39,7 +37,7 @@ export const services: ServiceInfo[] = [
     slug: "web-landing-pages",
     title: "Web & Landing Pages",
     description:
-      "Fast, modern websites and landing pages built with Next.js — for products, portfolios, or small businesses.",
+      "Fast, modern websites and landing pages built with Next.js — for small businesses.",
     deliverables: [
       "Responsive Next.js website",
       "SEO-ready structure",
@@ -50,7 +48,7 @@ export const services: ServiceInfo[] = [
     slug: "ui-ux-design",
     title: "UI/UX Design",
     description:
-      "Clean, purposeful interface design for mobile and web — wireframes through polished UI.",
+      "Clean, purposeful interface design for mobile and web — wireframes through polished UI -everything.",
     deliverables: [
       "Wireframes & prototypes",
       "Design system / style guide",
@@ -92,7 +90,7 @@ export const apps: AppInfo[] = [
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.zivxio.nustone&hl=en_ZA",
     rating: 5,
-    ratingCount: 12,
+    ratingCount: 13,
     installs: "100+",
     status: "live",
     icon: "/icons/nust-one.png",
@@ -157,7 +155,7 @@ export const apps: AppInfo[] = [
     rating: 0,
     ratingCount: 0,
     installs: "New",
-    status: "live",
+    status: "coming-soon",
     icon: "/icons/billcheck.png",
     heroScreenshot: "/screenshots/billcheck-1.png",
     screenshots: [
@@ -242,34 +240,19 @@ export const apps: AppInfo[] = [
       },
     ],
   },
+
   {
-    slug: "batchbook",
-    name: "BatchBook",
-    tagline: "Smart batch management for students.",
+    slug: "momently",
+    name: "Momently",
+    tagline: "Capture the moments, make memories",
     description:
-      "BatchBook helps student batches organize class info, announcements, and shared resources in one place.",
-    category: "Productivity",
+      "Add one picture daily, see your whole month or year on one screen.",
+    category: "Lifestyle",
     rating: 0,
     ratingCount: 0,
     installs: "—",
     status: "coming-soon",
-    heroScreenshot: "/screenshots/batchbook-1.png",
-    screenshots: [],
-    features: [],
-    faqs: [],
-  },
-  {
-    slug: "gpa-calculator",
-    name: "GPA Calculator",
-    tagline: "Calculate, analyze, and improve your GPA.",
-    description:
-      "A simple, accurate GPA calculator built for university grading systems, with semester-by-semester tracking.",
-    category: "Education",
-    rating: 0,
-    ratingCount: 0,
-    installs: "—",
-    status: "coming-soon",
-    heroScreenshot: "/screenshots/gpa-calculator-1.png",
+    heroScreenshot: "/screenshots/momently.png",
     screenshots: [],
     features: [],
     faqs: [],

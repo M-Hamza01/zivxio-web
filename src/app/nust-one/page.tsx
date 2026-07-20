@@ -38,7 +38,7 @@ export default function NustOne() {
           <div className="flex flex-col sm:flex-row gap-8 sm:items-start">
             <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-[20px] overflow-hidden shrink-0 shadow-sm">
               <Image
-                src={app.icon}
+                src={app.icon as string}
                 alt={`${app.name} app icon`}
                 fill
                 className="object-cover"

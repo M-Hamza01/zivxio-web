@@ -145,6 +145,104 @@ export const apps: AppInfo[] = [
     ],
   },
   {
+    slug: "billcheck",
+    name: "BillCheck",
+    tagline: "Every electricity bill in Pakistan, one app.",
+    description:
+      "BillCheck lets you check, view, and download electricity bills from all major Pakistani DISCOs — LESCO, IESCO, PESCO, FESCO, MEPCO, GEPCO, HESCO, SEPCO, QESCO, TESCO, and K-Electric — in one place. No account, no login, no juggling separate websites.",
+    category: "Utilities",
+    playStoreUrl:
+      "https://play.google.com/store/apps/details?id=com.zivxio.billcheck",
+    // TODO: fill in real stats once available
+    rating: 0,
+    ratingCount: 0,
+    installs: "New",
+    status: "live",
+    icon: "/icons/billcheck.png",
+    heroScreenshot: "/screenshots/billcheck-1.png",
+    screenshots: [
+      "/screenshots/billcheck-1.png",
+      "/screenshots/billcheck-2.png",
+      "/screenshots/billcheck-3.png",
+      "/screenshots/billcheck-4.png",
+      "/screenshots/billcheck-5.png",
+    ],
+    features: [
+      {
+        title: "Every major DISCO, one app",
+        description:
+          "LESCO, IESCO, PESCO, FESCO, MEPCO, GEPCO, HESCO, SEPCO, QESCO, TESCO, and K-Electric — all supported in one consistent interface.",
+      },
+      {
+        title: "No account, no login",
+        description:
+          "Just add your meter with its reference or account number — the same one printed on your paper bill. Nothing to sign up for.",
+      },
+      {
+        title: "Multiple meters, one screen",
+        description:
+          "Add your home, shop, and parents' place under nicknames you choose. Switch between all of them in a tap.",
+      },
+      {
+        title: "Full bill details",
+        description:
+          "Units consumed, billing dates, amount payable, due date, and a full charge breakdown — pulled live from your DISCO's official portal.",
+      },
+      {
+        title: "Bill history & usage tracking",
+        description:
+          "Scroll back through previous months and see a 6 or 12-month chart with a plain-language note on what's changed — not just a graph.",
+      },
+      {
+        title: "Smart notifications",
+        description:
+          "Get alerted the moment a new bill is issued, and choose your own due-date reminder: 1, 2, 3, or 7 days ahead.",
+      },
+    ],
+    faqs: [
+      {
+        question: "Is BillCheck free?",
+        answer:
+          "Yes. BillCheck is completely free to download and use. It's supported by ads rather than subscriptions or a paywall.",
+      },
+      {
+        question: "Do I need to create an account?",
+        answer:
+          "No. There's no sign-up, no password, and no personal profile. You just add a meter using its reference or account number, and BillCheck fetches your bill.",
+      },
+      {
+        question: "Which DISCOs are supported?",
+        answer:
+          "LESCO, IESCO, PESCO, FESCO, MEPCO, GEPCO, HESCO, SEPCO, QESCO, TESCO, and K-Electric. If your bill comes from any of these providers, BillCheck can check it.",
+      },
+      {
+        question: "Where do I find my reference or account number?",
+        answer:
+          "It's printed on your paper bill near the top — a 14-digit reference number for most DISCOs, or your account number for K-Electric. BillCheck will guide you when you add a meter.",
+      },
+      {
+        question: "Can I check bills for more than one house or shop?",
+        answer:
+          "Yes. Add as many meters as you need — each with its own nickname — and switch between them from the home screen.",
+      },
+      {
+        question: "Is my data safe? Where is it stored?",
+        answer:
+          "Your meter details and bill history are stored only on your own phone. BillCheck doesn't run its own server — every check goes directly from your device to your DISCO's official website.",
+      },
+      {
+        question: "Does BillCheck let me pay my bill?",
+        answer:
+          "No. BillCheck helps you check, track, and download your bill — it doesn't process payments. You'll still pay through your bank, your DISCO's own channels, or wherever you normally pay.",
+      },
+      {
+        question: "Is BillCheck affiliated with LESCO, PESCO, K-Electric, or the government?",
+        answer:
+          "No. BillCheck is an independent app and isn't affiliated with, endorsed by, or operated by any DISCO, K-Electric, or any government body.",
+      },
+    ],
+  },
+  {
     slug: "batchbook",
     name: "BatchBook",
     tagline: "Smart batch management for students.",

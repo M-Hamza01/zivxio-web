@@ -104,20 +104,30 @@ export const apps: AppInfo[] = [
     ],
     features: [
       {
-        title: "Seamless portals",
+        title: "Native Qalam Integration",
         description:
-          "No more constant logins. Your academic information across multiple NUST domains is securely aggregated into a single, straightforward dashboard.",
+          "One-tap access to NUST Qalam. View your grades and attendance. Bunk Meter to track your Bunks and guide you on how to keep your attendance above 75%",
       },
       {
-        title: "Contextual notifications",
+        title: "Seamless LMS Integration",
         description:
-          "Receive immediate push alerts for urgent portal announcements, grading releases, or timetable changes directly on your phone.",
+          "One-tap access to NUST Moodle LMS. View all enrolled courses instantly. Access assignments, quizzes, and course materials",
       },
       {
         title: "Smart timetables",
         description:
-          "A dynamic scheduler that handles section assignments automatically. Track attendance benchmarks and daily venue maps cleanly.",
+          "Add ANY activity - lectures, labs, gym sessions, meetings, study time, or personal tasks. Never miss a class or important event again!",
       },
+      {
+        title: "Class Hub Events",
+        description:
+          "Stay updated with your quizzes, assignment and other deadlines. Reminder before the deadline. Filter by event type (Quiz, Assignment, Lab etc.)",
+      },
+      {
+        title: "Help and support",
+        description:
+          "Comprehensive FAQ system. Easy to access support team. Reach us if you need any kind of help with NUST One app.",
+      }
     ],
     faqs: [
       {
@@ -128,12 +138,12 @@ export const apps: AppInfo[] = [
       {
         question: "Does this app track my real-time location?",
         answer:
-          "No. The smart timetable relies entirely on pre-loaded campus coordinates and schedule data to show you your next class venue.",
+          "No. NUST One does not track your real time location.",
       },
       {
         question: "Is NUST One an official app of NUST?",
         answer:
-          "No. NUST One is an independent app built by ZivXio for NUST students. It connects to official NUST portals but is not developed or endorsed by the university.",
+          "No. NUST One is an independent app built by ZivXio Labs for NUST students. It connects to official NUST portals but is not developed or endorsed by the university.",
       },
       {
         question: "Is the app free to use?",
@@ -147,7 +157,7 @@ export const apps: AppInfo[] = [
     name: "BillCheck",
     tagline: "Every electricity bill in Pakistan, one app.",
     description:
-      "BillCheck lets you check, view, and download electricity bills from all major Pakistani DISCOs — LESCO, IESCO, PESCO, FESCO, MEPCO, GEPCO, HESCO, SEPCO, QESCO, TESCO, and K-Electric — in one place. No account, no login, no juggling separate websites.",
+      "BillCheck lets you check, view, track, and download electricity bills from all major Pakistani DISCOs — LESCO, IESCO, PESCO, FESCO, MEPCO, GEPCO, HESCO, SEPCO, QESCO, TESCO, and K-Electric — in one place. No account, no login, no juggling separate websites.",
     category: "Utilities",
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.zivxio.billcheck",

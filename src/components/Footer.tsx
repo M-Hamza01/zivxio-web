@@ -24,7 +24,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <p className="text-lg font-bold text-white mb-3">ZivXio</p>
             <p className="text-sm text-[var(--text-on-dark-secondary)] leading-relaxed max-w-xs">
-              An independent software studio building useful, focused mobile apps.
+              An App Studio building useful, focused mobile apps.
             </p>
           </div>
 

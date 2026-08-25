@@ -30,7 +30,7 @@ export default function Home() {
         <Container className="relative grid grid-cols-1 lg:grid-cols-2 gap-12 items-center z-10">
           <div>
             <RevealOnScroll delay={0}>
-              <Eyebrow tone="on-dark">independent app studio</Eyebrow>
+              <Eyebrow tone="on-dark">App Studio</Eyebrow>
             </RevealOnScroll>
 
             <RevealOnScroll delay={80}>
@@ -78,7 +78,7 @@ export default function Home() {
             {[
               { end: 5, decimals: 1, suffix: "★", label: "Play Store rating" },
               { end: 12, suffix: "+", label: "User reviews" },
-              { end: 100, suffix: "+", label: "Downloads" },
+              { end: 300, suffix: "+", label: "Downloads" },
             ].map((stat, i) => (
               <RevealOnScroll key={stat.label} delay={i * 80}>
                 <p className="text-3xl font-bold text-[var(--navy-900)]">
@@ -162,7 +162,7 @@ export default function Home() {
                 Software that respects your time
               </h2>
               <p className="text-[var(--text-secondary)] text-lg mb-6 leading-relaxed">
-                ZivXio is an independent studio building utility apps that do
+                ZivXio is an App studio building utility apps that do
                 one job well. We start from real, specific problems — like the
                 fragmented student digital experience — and design backward
                 from there.

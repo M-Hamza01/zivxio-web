@@ -4,7 +4,7 @@
 
 export const siteConfig = {
   name: "ZivXio",
-  siteUrl: "https://zivxio.vercel.app", // TODO: replace with real domain before launch
+  siteUrl: "https://zivxio.vercel.app",
   description:
     "ZivXio is a software studio building useful, reliable mobile apps for students and everyday productivity.",
   email: "zivxio.app@gmail.com",
@@ -91,7 +91,7 @@ export const apps: AppInfo[] = [
       "https://play.google.com/store/apps/details?id=com.zivxio.nustone&hl=en_ZA",
     rating: 5,
     ratingCount: 13,
-    installs: "100+",
+    installs: "300+",
     status: "live",
     icon: "/icons/nust-one.png",
     heroScreenshot: "/screenshots/nust-one-1.png",
@@ -114,9 +114,14 @@ export const apps: AppInfo[] = [
           "One-tap access to NUST Moodle LMS. View all enrolled courses instantly. Access assignments, quizzes, and course materials",
       },
       {
-        title: "Smart timetables",
+        title: "Smart Timetables",
         description:
           "Add ANY activity - lectures, labs, gym sessions, meetings, study time, or personal tasks. Never miss a class or important event again!",
+      },
+      {
+        title: "Contextual Notifications",
+        description:
+          "Receive push alerts for your timetable activity/class you added, directly on your phone.",
       },
       {
         title: "Class Hub Events",
@@ -124,7 +129,7 @@ export const apps: AppInfo[] = [
           "Stay updated with your quizzes, assignment and other deadlines. Reminder before the deadline. Filter by event type (Quiz, Assignment, Lab etc.)",
       },
       {
-        title: "Help and support",
+        title: "Help and Support",
         description:
           "Comprehensive FAQ system. Easy to access support team. Reach us if you need any kind of help with NUST One app.",
       }
@@ -165,7 +170,7 @@ export const apps: AppInfo[] = [
     rating: 0,
     ratingCount: 0,
     installs: "New",
-    status: "coming-soon",
+    status: "live",
     icon: "/icons/billcheck.png",
     heroScreenshot: "/screenshots/billcheck-1.png",
     screenshots: [
@@ -174,6 +179,7 @@ export const apps: AppInfo[] = [
       "/screenshots/billcheck-3.png",
       "/screenshots/billcheck-4.png",
       "/screenshots/billcheck-5.png",
+      "/screenshots/billcheck-6.png",
     ],
     features: [
       {

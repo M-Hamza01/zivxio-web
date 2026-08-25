@@ -30,7 +30,7 @@ export default function PrivacyPolicy() {
             </h2>
             <p>
               Welcome to <strong className="text-[var(--navy-900)]">ZivXio</strong>.
-              We operate independent mobile utility applications, including
+              We operate mobile utility applications, including
               our flagship student tool,{" "}
               <strong className="text-[var(--navy-900)]">NUST One</strong>.
               This Privacy Policy outlines how we handle data within our

@@ -30,20 +30,20 @@ const jbmono = JetBrains_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
   title: {
-    default: `${siteConfig.name} | Independent App Studio`,
+    default: `${siteConfig.name} | App Studio`,
     template: `%s | ${siteConfig.name}`,
   },
   description: siteConfig.description,
   openGraph: {
     type: "website",
     siteName: siteConfig.name,
-    title: `${siteConfig.name} | Independent App Studio`,
+    title: `${siteConfig.name} | App Studio`,
     description: siteConfig.description,
     url: siteConfig.siteUrl,
   },
   twitter: {
     card: "summary_large_image",
-    title: `${siteConfig.name} | Independent App Studio`,
+    title: `${siteConfig.name} | App Studio`,
     description: siteConfig.description,
   },
 };

@@ -5,7 +5,7 @@ excerpt: "A full walkthrough of the math behind NUST One's GPA Predictor, Projec
 category: "Behind the Build"
 ---
 
-NUST One's Qalam tab shows a few numbers that aren't on Qalam itself: a **Predicted GPA**, a **Projected CGPA**, and a **What-If** score you can drag around per course. None of these are official - Qalam doesn't publish them, and NUST doesn't expose the raw ingredients (like your instructor's actual grading weights) anywhere we can scrape. This article explains exactly what each number means, how it's computed, and - just as importantly - where it's guessing.
+NUST One's Qalam tab shows a few numbers that aren't on Qalam itself: a **Predicted GPA**, a **Projected CGPA**, and a **What-If** score you can drag around per course. None of these are official. This article explains exactly what each number means, how it's computed, and - just as importantly - where it's guessing.
 
 If you just want the short version: **these are estimates based on your current graded work and NUST's typical grading conventions, not a guarantee.** Read on for the actual math.
 
@@ -52,7 +52,7 @@ Imagine a course with six quizzes and one final exam. A flat average across all 
 
 ### The default weights: NUST-typical ranges
 
-Since Qalam doesn't expose your instructor's actual weighting scheme anywhere, NUST One defaults to typical ranges seen across NUST courses:
+Because grading schemes vary across courses, NUST One starts with typical ranges seen across NUST courses:
 
 - Quiz: ~10-15%
 - Assignments: ~5-10%

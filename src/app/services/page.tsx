@@ -34,7 +34,7 @@ export default function Services() {
         <Container>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {services.map((service, i) => (
-              <RevealOnScroll key={service.slug} delay={i * 100}>
+              <RevealOnScroll key={service.slug} delay={i * 100} className="h-full">
                 <ServiceCard service={service} />
               </RevealOnScroll>
             ))}

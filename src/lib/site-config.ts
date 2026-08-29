@@ -2,6 +2,8 @@
 // sitemap/robots. Update siteUrl once the real domain is live — everything
 // else derives from this file so you only change it in one place.
 
+import appStats from "@/data/app-stats.json";
+
 export const siteConfig = {
   name: "ZivXio",
   siteUrl: "https://zivxio.vercel.app",
@@ -77,15 +79,17 @@ export type AppInfo = {
   faqs: { question: string; answer: string }[];
 };
 
-// Single source of truth for app facts. As you ship more apps, add entries
-// here — the home page, sitemap, and JSON-LD all read from this.
-export const apps: AppInfo[] = [
+// Fallback facts, used until scripts/update-app-stats.mjs has run at least
+// once, or if a given app's live fetch fails. Keep rating/ratingCount/installs
+// here reasonably current by hand as a safety net — see src/data/app-stats.json
+// and scripts/README.md for how the live values are kept fresh automatically.
+const appDefaults: AppInfo[] = [
   {
     slug: "nust-one",
     name: "NUST One",
-    tagline: "The ultimate student companion for NUST.",
+    tagline: "Everything NUST, in one app.",
     description:
-      "NUST One brings your NUST student portals, timetable, and notices into one premium app, so you stop juggling logins and start managing your campus life from a single dashboard.",
+      "NUST One is an unofficial, independently built companion app for NUST (National University of Sciences and Technology) students. It connects to your existing Qalam and LMS (Moodle) accounts and brings your grades, attendance, GPA predictions, course activity, and class announcements into one consistent, modern interface — instead of switching between multiple websites and apps throughout the day.",
     category: "Education",
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.zivxio.nustone&hl=en_ZA",
@@ -104,56 +108,101 @@ export const apps: AppInfo[] = [
     ],
     features: [
       {
-        title: "Native Qalam Integration",
+        title: "GPA Predictor",
         description:
-          "One-tap access to NUST Qalam. View your grades and attendance. Bunk Meter to track your Bunks and guide you on how to keep your attendance above 75%",
+          "Calculates your current CGPA and a live-updating predicted semester GPA from the assessment results already posted on Qalam. Updates automatically as new quiz, assignment, midterm, or final results are graded.",
       },
       {
-        title: "Seamless LMS Integration",
+        title: "What-If Predictor",
         description:
-          "One-tap access to NUST Moodle LMS. View all enrolled courses instantly. Access assignments, quizzes, and course materials",
+          "Simulate hypothetical outcomes before they happen — see how a B+ instead of an A- on your final would shift your GPA, so you know exactly how much a specific assessment is worth.",
       },
       {
-        title: "Smart Timetables",
+        title: "Qalam Integration",
         description:
-          "Add ANY activity - lectures, labs, gym sessions, meetings, study time, or personal tasks. Never miss a class or important event again!",
+          "Connects directly to your Qalam account to pull grades, course standing, and attendance data, using the same Qalam ID and password you already use — no separate account needed.",
       },
       {
-        title: "Contextual Notifications",
+        title: "LMS (Moodle) Integration",
         description:
-          "Receive push alerts for your timetable activity/class you added, directly on your phone.",
+          "Connects to the NUST LMS to show enrolled courses, course content, and assignment or quiz deadlines natively inside the app, without opening the LMS website separately.",
       },
       {
-        title: "Class Hub Events",
+        title: "Class Events & Community",
         description:
-          "Stay updated with your quizzes, assignment and other deadlines. Reminder before the deadline. Filter by event type (Quiz, Assignment, Lab etc.)",
+          "Join your class with a code from your Class Representative to see class-specific events — quizzes, makeup classes, due dates, announcements — and comment on each one for quick clarifications.",
       },
       {
-        title: "Help and Support",
+        title: "Appearance & Themes",
         description:
-          "Comprehensive FAQ system. Easy to access support team. Reach us if you need any kind of help with NUST One app.",
-      }
+          "Multiple visual themes and accent colors so you can personalize how the app looks, instead of being limited to a single fixed design.",
+      },
+      {
+        title: "Notifications",
+        description:
+          "Get notified for new class events and reminders ahead of upcoming ones, with adjustable notification settings.",
+      },
+      {
+        title: "Onboarding for New Students",
+        description:
+          "A short first-launch walkthrough explains what NUST One does and guides you through connecting your Qalam and LMS accounts, so your dashboard is meaningful from day one.",
+      },
     ],
     faqs: [
       {
-        question: "Is my NUST portal password secure?",
+        question: "What is NUST One?",
         answer:
-          "Yes, entirely. NUST One processes your login authentication directly with official portal protocols and does not store credentials externally.",
+          "NUST One is an unofficial mobile app for NUST (National University of Sciences and Technology, Pakistan) students that combines Qalam grade tracking, GPA prediction, LMS/Moodle course activity, and class event management into a single app.",
       },
       {
-        question: "Does this app track my real-time location?",
+        question: "Is NUST One an official NUST app?",
         answer:
-          "No. NUST One does not track your real time location.",
+          "No. NUST One is an independently developed, unofficial companion app built by a NUST student. It is not created, operated, or endorsed by NUST University itself, but it connects to the official Qalam and LMS systems using each student's own login credentials.",
       },
       {
-        question: "Is NUST One an official app of NUST?",
+        question: "Does NUST One require a separate account?",
         answer:
-          "No. NUST One is an independent app built by ZivXio Labs for NUST students. It connects to official NUST portals but is not developed or endorsed by the university.",
+          "No. NUST One uses your existing Qalam ID/password and LMS (Moodle) username/password to connect — the same credentials already used on the official Qalam and LMS websites. NUST One doesn't create a new, separate account for these services.",
       },
       {
-        question: "Is the app free to use?",
+        question: "How does the GPA Predictor in NUST One work?",
         answer:
-          "Yes. NUST One is free to download and use, with no subscription required.",
+          "It reads your currently graded assessments from Qalam and calculates a predicted semester GPA using NUST-typical assessment weightings (Quiz, Assignment, Mid, Final, and Lecture/Lab splits where applicable). It updates automatically as new results are posted.",
+      },
+      {
+        question: "What is the What-If Predictor in NUST One?",
+        answer:
+          "It lets you enter a hypothetical grade for an upcoming or ungraded assessment and see how it would affect your predicted GPA, without that grade having actually been posted yet.",
+      },
+      {
+        question: "Can I see my LMS assignments and deadlines in NUST One?",
+        answer:
+          "Yes. NUST One connects to the NUST LMS (Moodle) to show enrolled courses, course content, and upcoming assignment or quiz deadlines directly inside the app.",
+      },
+      {
+        question: "How do I join my class on NUST One?",
+        answer:
+          "Enter a class code shared by your Class Representative (CR). Once approved, you can see and discuss events specific to that class.",
+      },
+      {
+        question: "Who can post events for a class on NUST One?",
+        answer:
+          "Only the Class Representative (CR) of a given class, or an app administrator, can post new events for that class. Regular class members can view events and comment on them but can't post new ones.",
+      },
+      {
+        question: "Is NUST One free?",
+        answer:
+          "Yes. NUST One is free to download and use. The app includes an optional in-app \"Buy Me a Chai\" donation option to support the developer, but this is entirely optional.",
+      },
+      {
+        question: "What platforms is NUST One available on?",
+        answer:
+          "NUST One is available on Android via the Google Play Store.",
+      },
+      {
+        question: "Who made NUST One?",
+        answer:
+          "NUST One is built and maintained independently by a NUST student developer, not by NUST University or any official university department.",
       },
     ],
   },
@@ -274,3 +323,14 @@ export const apps: AppInfo[] = [
     faqs: [],
   },
 ];
+
+// Live-fetched Play Store stats, refreshed by `npm run update-stats`
+// (scripts/update-app-stats.mjs) — see scripts/README.md. Only
+// rating/ratingCount/installs ever come from that file; everything else
+// (copy, features, faqs) always comes from appDefaults above. If a slug is
+// missing from the JSON (script hasn't run yet, or that app has no Play
+// Store listing), its appDefaults values are used untouched.
+export const apps: AppInfo[] = appDefaults.map((app) => {
+  const live = appStats.apps[app.slug as keyof typeof appStats.apps];
+  return live ? { ...app, ...live } : app;
+});

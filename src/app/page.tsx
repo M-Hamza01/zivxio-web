@@ -18,6 +18,14 @@ export const metadata: Metadata = {
 
 export default function Home() {
   const heroApp = apps.find((a) => a.status === "live") ?? apps[0];
+  // Flagship app anchors the headline rating; reviews/downloads are summed
+  // across live apps so this strip can never drift from site-config.
+  const flagshipApp = apps.find((a) => a.slug === "nust-one") ?? heroApp;
+  const totalReviews = apps.reduce((sum, a) => sum + a.ratingCount, 0);
+  const totalDownloads = apps.reduce(
+    (sum, a) => sum + (parseInt(a.installs, 10) || 0),
+    0
+  );
 
   return (
     <div className="w-full">
@@ -76,9 +84,9 @@ export default function Home() {
         <Container>
           <div className="grid grid-cols-3 gap-6 text-center">
             {[
-              { end: 5, decimals: 1, suffix: "★", label: "Play Store rating" },
-              { end: 12, suffix: "+", label: "User reviews" },
-              { end: 300, suffix: "+", label: "Downloads" },
+              { end: flagshipApp.rating, decimals: 1, suffix: "★", label: "Play Store rating" },
+              { end: totalReviews, suffix: "+", label: "User reviews" },
+              { end: totalDownloads, suffix: "+", label: "Downloads" },
             ].map((stat, i) => (
               <RevealOnScroll key={stat.label} delay={i * 80}>
                 <p className="text-3xl font-bold text-[var(--navy-900)]">
@@ -107,7 +115,7 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {apps.map((app, i) => (
-              <RevealOnScroll key={app.slug} delay={i * 100}>
+              <RevealOnScroll key={app.slug} delay={i * 100} className="h-full">
                 <AppCard app={app} />
               </RevealOnScroll>
             ))}
@@ -138,7 +146,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             {services.map((service, i) => (
               <RevealOnScroll key={service.slug} delay={i * 100}>
-                <div className="rounded-[var(--radius-lg)] border border-[var(--border)] bg-white p-5 card-lift">
+                <div className="h-full rounded-[var(--radius-lg)] border border-[var(--border)] bg-white p-5 card-lift">
                   <p className="font-semibold text-[var(--navy-900)] text-sm mb-1">
                     {service.title}
                   </p>

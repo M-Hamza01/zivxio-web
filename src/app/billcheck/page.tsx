@@ -36,7 +36,7 @@ const discos = [
 
 
 export default function BillCheck() {
-  const hasStats = app.ratingCount > 0;
+  const hasRating = app.ratingCount > 0;
 
   return (
     <div className="w-full">
@@ -72,9 +72,12 @@ export default function BillCheck() {
                 Free · Contains ads · Android
               </p>
 
-              {/* Stats row — only rendered when real data is available */}
-              {hasStats && (
-                <div className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-6">
+              {/* Stats row — the rating figure only appears once Play Store
+                  publishes one (apps need a minimum review count before a
+                  public star rating shows up at all); downloads and
+                  category are independent of that and always shown. */}
+              <div className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-6">
+                {hasRating && (
                   <RevealOnScroll delay={0}>
                     <div>
                       <p className="font-semibold text-[var(--navy-900)]">
@@ -85,28 +88,28 @@ export default function BillCheck() {
                       </p>
                     </div>
                   </RevealOnScroll>
-                  <RevealOnScroll delay={80}>
-                    <div>
-                      <p className="font-semibold text-[var(--navy-900)]">
-                        {app.installs}
-                      </p>
-                      <p className="text-xs text-[var(--text-tertiary)]">
-                        Downloads
-                      </p>
-                    </div>
-                  </RevealOnScroll>
-                  <RevealOnScroll delay={160}>
-                    <div>
-                      <p className="font-semibold text-[var(--navy-900)]">
-                        {app.category}
-                      </p>
-                      <p className="text-xs text-[var(--text-tertiary)]">
-                        Category
-                      </p>
-                    </div>
-                  </RevealOnScroll>
-                </div>
-              )}
+                )}
+                <RevealOnScroll delay={80}>
+                  <div>
+                    <p className="font-semibold text-[var(--navy-900)]">
+                      {app.installs}
+                    </p>
+                    <p className="text-xs text-[var(--text-tertiary)]">
+                      Downloads
+                    </p>
+                  </div>
+                </RevealOnScroll>
+                <RevealOnScroll delay={160}>
+                  <div>
+                    <p className="font-semibold text-[var(--navy-900)]">
+                      {app.category}
+                    </p>
+                    <p className="text-xs text-[var(--text-tertiary)]">
+                      Category
+                    </p>
+                  </div>
+                </RevealOnScroll>
+              </div>
 
               <div className="flex flex-wrap items-center gap-6">
                 <Button
@@ -167,8 +170,8 @@ export default function BillCheck() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {app.features.map((feature, i) => (
-              <RevealOnScroll key={feature.title} delay={i * 80}>
-                <Card variant="raised">
+              <RevealOnScroll key={feature.title} delay={i * 80} className="h-full">
+                <Card variant="raised" className="h-full">
                   <h3 className="text-lg font-bold text-[var(--navy-900)] mb-3">
                     {feature.title}
                   </h3>

@@ -7,7 +7,7 @@ export default function AppCard({ app }: { app: AppInfo }) {
   const isComingSoon = app.status === "coming-soon";
 
   return (
-    <Card variant="raised" className="flex flex-col p-6">
+    <Card variant="raised" className="flex h-full flex-col p-6">
       <div className="flex items-center gap-4 mb-4">
         {app.icon ? (
           <div className="relative w-12 h-12 rounded-[12px] overflow-hidden shrink-0">

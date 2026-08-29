@@ -57,9 +57,10 @@ export default function PrivacyPolicy() {
               </li>
               <li>
                 <strong className="text-[var(--navy-900)]">Local Storage:</strong>{" "}
-                Any settings, timetables, or customized data you create
-                within NUST One are stored locally on your physical device
-                and are never backed up to our servers.
+                Any settings you create within NUST One — such as your
+                appearance theme, notification preferences, and custom GPA
+                weightage entries — are stored locally on your physical
+                device and are never backed up to our servers.
               </li>
             </ul>
           </section>

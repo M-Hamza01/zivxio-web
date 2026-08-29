@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Section from "@/components/ui/Section";
 import Button from "@/components/ui/Button";
@@ -27,6 +28,8 @@ export const metadata: Metadata = {
 };
 
 export default function NustOne() {
+  const hasRating = app.ratingCount > 0;
+
   return (
     <div className="w-full">
       <SoftwareAppJsonLd app={app} />
@@ -36,15 +39,17 @@ export default function NustOne() {
       <Section tone="light" className="py-16 md:py-20">
         <Container className="max-w-5xl">
           <div className="flex flex-col sm:flex-row gap-8 sm:items-start">
-            <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-[20px] overflow-hidden shrink-0 shadow-sm">
-              <Image
-                src={app.icon as string}
-                alt={`${app.name} app icon`}
-                fill
-                className="object-cover"
-                sizes="112px"
-                priority
-              />
+            <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-[20px] overflow-hidden shrink-0 shadow-sm bg-[var(--surface)]">
+              {app.icon && (
+                <Image
+                  src={app.icon}
+                  alt={`${app.name} app icon`}
+                  fill
+                  className="object-cover"
+                  sizes="112px"
+                  priority
+                />
+              )}
             </div>
 
             <div className="flex-1">
@@ -55,24 +60,30 @@ export default function NustOne() {
                 ZivXio
               </p>
               <p className="text-sm text-[var(--text-tertiary)] mb-5">
-                Contains ads
+                Free · Contains ads · Android
               </p>
 
+              {/* Stats row — the rating figure only appears once Play Store
+                  publishes one (apps need a minimum review count before a
+                  public star rating shows up at all); downloads and
+                  category are independent of that and always shown. */}
               <div className="flex flex-wrap items-center gap-x-8 gap-y-2 mb-6">
-                <RevealOnScroll delay={0}>
-                  <div>
-                    <p className="font-semibold text-[var(--navy-900)]">
-                      <CountUp end={app.rating} decimals={1} suffix="★" />
-                    </p>
-                    <p className="text-xs text-[var(--text-tertiary)]">
-                      {app.ratingCount} reviews
-                    </p>
-                  </div>
-                </RevealOnScroll>
+                {hasRating && (
+                  <RevealOnScroll delay={0}>
+                    <div>
+                      <p className="font-semibold text-[var(--navy-900)]">
+                        <CountUp end={app.rating} decimals={1} suffix="★" />
+                      </p>
+                      <p className="text-xs text-[var(--text-tertiary)]">
+                        {app.ratingCount} reviews
+                      </p>
+                    </div>
+                  </RevealOnScroll>
+                )}
                 <RevealOnScroll delay={80}>
                   <div>
                     <p className="font-semibold text-[var(--navy-900)]">
-                      <CountUp end={100} suffix="+" />
+                      {app.installs}
                     </p>
                     <p className="text-xs text-[var(--text-tertiary)]">
                       Downloads
@@ -115,16 +126,18 @@ export default function NustOne() {
 
       {/* 3. Features */}
       <Section tone="surface" bordered className="py-20">
-        <Container>
-          <Eyebrow>features</Eyebrow>
-          <h2 className="text-3xl font-bold text-[var(--navy-900)] mt-3 mb-12">
-            Engineered for campus efficiency
-          </h2>
+        <Container className="max-w-5xl">
+          <RevealOnScroll>
+            <Eyebrow>features</Eyebrow>
+            <h2 className="text-3xl font-bold text-[var(--navy-900)] mt-3 mb-12">
+              Engineered for campus efficiency
+            </h2>
+          </RevealOnScroll>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {app.features.map((feature, i) => (
-              <RevealOnScroll key={feature.title} delay={i * 100}>
-                <Card variant="raised">
+              <RevealOnScroll key={feature.title} delay={i * 80} className="h-full">
+                <Card variant="raised" className="h-full">
                   <h3 className="text-lg font-bold text-[var(--navy-900)] mb-3">
                     {feature.title}
                   </h3>
@@ -141,19 +154,21 @@ export default function NustOne() {
       {/* 4. FAQ */}
       <Section tone="light" className="py-20">
         <Container className="max-w-3xl">
-          <Eyebrow>faq</Eyebrow>
-          <h2 className="text-2xl font-bold text-[var(--navy-900)] mt-3 mb-10">
-            Frequently asked questions
-          </h2>
+          <RevealOnScroll>
+            <Eyebrow>faq</Eyebrow>
+            <h2 className="text-2xl font-bold text-[var(--navy-900)] mt-3 mb-10">
+              Frequently asked questions
+            </h2>
+          </RevealOnScroll>
 
           <div className="divide-y divide-[var(--border)]">
             {app.faqs.map((faq) => (
               <details key={faq.question} className="group py-5">
-                <summary className="flex items-center justify-between cursor-pointer list-none">
-                  <span className="font-semibold text-[var(--navy-900)] pr-4">
+                <summary className="flex items-center justify-between cursor-pointer list-none gap-4">
+                  <span className="font-semibold text-[var(--navy-900)]">
                     {faq.question}
                   </span>
-                  <span className="font-mono-tight text-[var(--text-tertiary)] group-open:rotate-45 transition-transform shrink-0">
+                  <span className="font-mono-tight text-[var(--text-tertiary)] group-open:rotate-45 transition-transform shrink-0 text-lg leading-none">
                     +
                   </span>
                 </summary>
@@ -162,6 +177,23 @@ export default function NustOne() {
                 </p>
               </details>
             ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* 5. Legal links */}
+      <Section tone="surface" className="py-8">
+        <Container className="max-w-5xl">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+            <p className="font-mono-tight text-xs uppercase text-[var(--text-tertiary)]">
+              Legal
+            </p>
+            <Link
+              href="/privacy"
+              className="text-sm text-[var(--text-secondary)] hover:text-[var(--accent-600)] transition-colors"
+            >
+              Privacy Policy
+            </Link>
           </div>
         </Container>
       </Section>

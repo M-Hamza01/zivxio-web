@@ -1,0 +1,43 @@
+name: Update app stats
+
+# Refreshes src/data/app-stats.json from the public Play Store listings and
+# commits the result if anything changed. This is the only place these
+# numbers should be updated automatically — never on a live page request.
+on:
+  schedule:
+    # Once a day, 03:00 UTC. Play Store ratings/installs move slowly, so
+    # there's no need to run this more often — and running it less often
+    # is friendlier to Google's servers.
+    - cron: "0 3 * * *"
+  workflow_dispatch: {} # allows a manual "Run workflow" click from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  update-stats:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Fetch latest stats
+        run: npm run update-stats
+
+      - name: Commit changes if any
+        run: |
+          if git diff --quiet -- src/data/app-stats.json; then
+            echo "No stat changes — nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add src/data/app-stats.json
+          git commit -m "chore: refresh app stats [automated]"
+          git push

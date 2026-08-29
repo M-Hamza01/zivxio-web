@@ -3,7 +3,7 @@ import { ServiceInfo } from "@/lib/site-config";
 
 export default function ServiceCard({ service }: { service: ServiceInfo }) {
   return (
-    <Card variant="raised" className="flex flex-col">
+    <Card variant="raised" className="flex h-full flex-col">
       <h3 className="text-xl font-bold text-[var(--navy-900)] mb-3">
         {service.title}
       </h3>

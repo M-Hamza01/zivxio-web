@@ -52,9 +52,10 @@ const DATA_PATH = path.join(__dirname, "../src/data/app-stats.json");
 // slug -> Play Store package name (appId). Keep this in sync with the
 // playStoreUrl entries in src/lib/site-config.ts — add a line here whenever
 // a new app gets a Play Store listing.
+// slug -> app configuration
 const APPS = {
-  "nust-one": "com.zivxio.nustone",
-  billcheck: "com.zivxio.billcheck",
+  "nust-one": { appId: "com.zivxio.nustone", country: "pk" },
+  billcheck: { appId: "com.zivxio.billcheck", country: "us" },
 };
 
 const REQUEST_DELAY_MS = 1500; // be polite — space requests out, no burst hits
@@ -96,11 +97,15 @@ async function main() {
   let failures = 0;
 
   for (let i = 0; i < slugs.length; i++) {
-    const [slug, appId] = slugs[i];
+    const [slug, appConfig] = slugs[i];
     const previous = existing.apps[slug] ?? {};
 
     try {
-      const info = await gplay.app({ appId });
+      const info = await gplay.app({ 
+        appId: appConfig.appId, 
+        country: appConfig.country, 
+        lang: "en" 
+      });
 
       // IMPORTANT: score/ratings can legitimately be `undefined` here, and
       // that's not a fetch failure — Google Play simply doesn't render a

@@ -159,6 +159,11 @@ const appDefaults: AppInfo[] = [
         answer:
           "No. NUST One is an independently developed, unofficial companion app built by a NUST student. It is not created, operated, or endorsed by NUST University itself, but it connects to the official Qalam and LMS systems using each student's own login credentials.",
       },
+     {
+        question: "Is my data safe on NUST One?",
+        answer:
+          "Yes. NUST One saves you Qalam and LMS credentials locally on your device in ENCRYPTED form. Your credentials or other Qalam/LMS data never goes out of your device neither is it stored on any server owned by NUST One",
+      },
       {
         question: "Does NUST One require a separate account?",
         answer:

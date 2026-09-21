@@ -105,6 +105,8 @@ const appDefaults: AppInfo[] = [
       "/screenshots/nust-one-3.png",
       "/screenshots/nust-one-4.png",
       "/screenshots/nust-one-5.png",
+      "/screenshots/nust-one-6.png",
+      "/screenshots/nust-one-7.png"
     ],
     features: [
       {

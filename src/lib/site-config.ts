@@ -62,6 +62,7 @@ export const services: ServiceInfo[] = [
 export type AppInfo = {
   slug: string;
   name: string;
+  shortName?: string;
   tagline: string;
   description: string;
   category: string;
@@ -86,10 +87,11 @@ export type AppInfo = {
 const appDefaults: AppInfo[] = [
   {
     slug: "nust-one",
-    name: "NUST One",
-    tagline: "Everything NUST, in one app.",
+    name: "NUST One: Student LMS & Qalam",
+    shortName: "NUST One",
+    tagline: "Unified student companion for NUST: attendance Bunk Meter, LMS deadline sync, and grade roadmaps.",
     description:
-      "NUST One is an unofficial, independently built companion app for NUST (National University of Sciences and Technology) students. It connects to your existing Qalam and LMS (Moodle) accounts and brings your grades, attendance, GPA predictions, course activity, and class announcements into one consistent, modern interface — instead of switching between multiple websites and apps throughout the day.",
+      "NUST One: Student LMS & Qalam is an unofficial, independently built companion app for NUST (National University of Sciences and Technology) students. It connects directly to your Qalam and LMS (Moodle) accounts to bring attendance tracking with a live Bunk Meter, assignment and quiz deadline calendar sync, GPA predictions, and an exam Score Roadmap into one fast, native mobile interface.",
     category: "Education",
     playStoreUrl:
       "https://play.google.com/store/apps/details?id=com.zivxio.nustone&hl=en_ZA",
@@ -110,71 +112,86 @@ const appDefaults: AppInfo[] = [
     ],
     features: [
       {
-        title: "GPA Predictor",
+        title: "Score Roadmap (Target Grade Solver)",
         description:
-          "Calculates your current CGPA and a live-updating predicted semester GPA from the assessment results already posted on Qalam. Updates automatically as new quiz, assignment, midterm, or final results are graded.",
+          "Pick your target letter grade (such as an A or B+) for any enrolled course. The app evaluates your current graded weightages and calculates the exact scores needed in upcoming final exams, midterms, quizzes, and assignments to hit that goal.",
       },
       {
-        title: "What-If Predictor",
+        title: "Attendance & Live Bunk Meter",
         description:
-          "Simulate hypothetical outcomes before they happen — see how a B+ instead of an A- on your final would shift your GPA, so you know exactly how much a specific assessment is worth.",
+          "Track real-time course attendance percentages directly from Qalam. The built-in Bunk Meter calculates how many classes you can safely miss—or how many you must attend—to remain safely above the university's 75% attendance threshold.",
       },
       {
-        title: "Qalam Integration",
+        title: "LMS Integration & Calendar Sync",
         description:
-          "Connects directly to your Qalam account to pull grades, course standing, and attendance data, using the same Qalam ID and password you already use — no separate account needed.",
+          "Connects to the NUST LMS (Moodle) to display enrolled courses, course files, and assignment, lab, or quiz deadlines. With one tap, sync all deadlines straight to your device's native calendar (such as Google Calendar) with custom advance alerts.",
       },
       {
-        title: "LMS (Moodle) Integration",
+        title: "GPA Predictor & Custom Weightages",
         description:
-          "Connects to the NUST LMS to show enrolled courses, course content, and assignment or quiz deadlines natively inside the app, without opening the LMS website separately.",
+          "Calculates your current CGPA and predicts your semester GPA based on graded assessments from Qalam. Add and customize course weightages (quizzes, assignments, midterms, labs, and finals) for precise semester forecasts.",
       },
       {
-        title: "Class Events & Community",
+        title: "What-If Grade Simulator",
         description:
-          "Join your class with a code from your Class Representative to see class-specific events — quizzes, makeup classes, due dates, announcements — and comment on each one for quick clarifications.",
+          "Simulate hypothetical exam and assignment scores before results are officially published, giving you clear foresight into how different marks will impact your semester GPA.",
       },
       {
-        title: "Appearance & Themes",
+        title: "Biometric CGPA Privacy",
         description:
-          "Multiple visual themes and accent colors so you can personalize how the app looks, instead of being limited to a single fixed design.",
+          "Keep sensitive academic records and CGPA private. The app lets you lock your CGPA behind your phone's biometric gate (fingerprint or face unlock) on the home dashboard.",
       },
       {
-        title: "Notifications",
+        title: "Class Hubs & Real-Time Sync",
         description:
-          "Get notified for new class events and reminders ahead of upcoming ones, with adjustable notification settings.",
+          "Join your section with a code from your Class Representative (CR) to view shared timetables, makeup class alerts, and section announcements.",
       },
       {
-        title: "Onboarding for New Students",
+        title: "Native Performance & Offline Caching",
         description:
-          "A short first-launch walkthrough explains what NUST One does and guides you through connecting your Qalam and LMS accounts, so your dashboard is meaningful from day one.",
+          "Built natively with Kotlin and Jetpack Compose. Stale-while-revalidate offline caching ensures your attendance, timetable, and deadlines load instantly even when campus Wi-Fi is slow.",
       },
     ],
     faqs: [
       {
-        question: "What is NUST One?",
+        question: "What is NUST One: Student LMS & Qalam?",
         answer:
-          "NUST One is an unofficial mobile app for NUST (National University of Sciences and Technology, Pakistan) students that combines Qalam grade tracking, GPA prediction, LMS/Moodle course activity, and class event management into a single app.",
+          "NUST One: Student LMS & Qalam is an unofficial mobile companion app for students at the National University of Sciences and Technology (NUST) in Pakistan. It consolidates Qalam (attendance and grade tracking), a target Score Roadmap, LMS/Moodle (course content, assignment, lab, and quiz deadlines with calendar sync), and class event coordination into a single mobile app.",
       },
       {
         question: "Is NUST One an official NUST app?",
         answer:
           "No. NUST One is an independently developed, unofficial companion app built by a NUST student. It is not created, operated, or endorsed by NUST University itself, but it connects to the official Qalam and LMS systems using each student's own login credentials.",
       },
-     {
+      {
         question: "Is my data safe on NUST One?",
         answer:
-          "Yes. NUST One saves you Qalam and LMS credentials locally on your device in ENCRYPTED form. Your credentials or other Qalam/LMS data never goes out of your device neither is it stored on any server owned by NUST One",
+          "Yes. NUST One saves your Qalam and LMS credentials locally on your device in encrypted form. Your credentials and academic data never leave your device and are not stored on any external server.",
       },
       {
         question: "Does NUST One require a separate account?",
         answer:
-          "No. NUST One uses your existing Qalam ID/password and LMS (Moodle) username/password to connect — the same credentials already used on the official Qalam and LMS websites. NUST One doesn't create a new, separate account for these services.",
+          "No. NUST One uses your existing Qalam ID/password and LMS (Moodle) username/password to connect — the same credentials already used on the official Qalam and LMS websites. NUST One does not create a new, separate account for these services.",
       },
       {
-        question: "How does the GPA Predictor in NUST One work?",
+        question: "How does the Score Roadmap work in NUST One?",
         answer:
-          "It reads your currently graded assessments from Qalam and calculates a predicted semester GPA using NUST-typical assessment weightings (Quiz, Assignment, Mid, Final, and Lecture/Lab splits where applicable). It updates automatically as new results are posted.",
+          "The Score Roadmap reverse-engineers grade boundaries for your courses. By analyzing your graded quizzes, assignments, and midterms against course weightages, it calculates the minimum scores you need in remaining assessments to achieve your target letter grade (e.g., A, B+).",
+      },
+      {
+        question: "How does the GPA Predictor work?",
+        answer:
+          "It reads your graded assessments from Qalam and calculates a predicted semester GPA using NUST assessment weightings (quizzes, assignments, midterms, finals, and lecture/lab splits). You can also enter custom weightages to match your instructor's specific course outline.",
+      },
+      {
+        question: "Can I sync LMS assignment deadlines to my calendar?",
+        answer:
+          "Yes. With one tap, NUST One extracts your upcoming assignment, lab, and quiz deadlines from NUST LMS and adds them to your phone's native calendar (such as Google Calendar) with automated advance reminders.",
+      },
+      {
+        question: "Can someone else see my CGPA if they use my phone?",
+        answer:
+          "No, if you enable the Biometric Lock. NUST One integrates with Android's native biometric prompt, allowing you to hide your CGPA and grade details behind fingerprint or device lock.",
       },
       {
         question: "What is the What-If Predictor in NUST One?",
@@ -182,9 +199,9 @@ const appDefaults: AppInfo[] = [
           "It lets you enter a hypothetical grade for an upcoming or ungraded assessment and see how it would affect your predicted GPA, without that grade having actually been posted yet.",
       },
       {
-        question: "Can I see my LMS assignments and deadlines in NUST One?",
+        question: "Can I see my LMS course content and deadlines in NUST One?",
         answer:
-          "Yes. NUST One connects to the NUST LMS (Moodle) to show enrolled courses, course content, and upcoming assignment or quiz deadlines directly inside the app.",
+          "Yes. NUST One connects to the NUST LMS (Moodle) to show enrolled courses, course files, and upcoming assignment, lab, or quiz deadlines directly inside the app.",
       },
       {
         question: "How do I join my class on NUST One?",
@@ -194,7 +211,7 @@ const appDefaults: AppInfo[] = [
       {
         question: "Who can post events for a class on NUST One?",
         answer:
-          "Only the Class Representative (CR) of a given class, or an app administrator, can post new events for that class. Regular class members can view events and comment on them but can't post new ones.",
+          "Only the Class Representative (CR) of a given class, or an app administrator, can post new events for that class. Regular class members can view events and comment on them but cannot post new ones.",
       },
       {
         question: "Is NUST One free?",

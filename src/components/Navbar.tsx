@@ -20,7 +20,7 @@ export default function Navbar() {
 
   const currentApp = apps.find((app) => pathname?.startsWith(`/${app.slug}`));
   const cta = currentApp && currentApp.playStoreUrl
-    ? { label: `Get ${currentApp.name}`, href: currentApp.playStoreUrl, external: true }
+    ? { label: `Get ${currentApp.shortName || currentApp.name}`, href: currentApp.playStoreUrl, external: true }
     : { label: "Explore Apps", href: "/apps", external: false };
 
   return (

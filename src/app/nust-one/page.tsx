@@ -17,11 +17,11 @@ import { apps, siteConfig } from "@/lib/site-config";
 const app = apps.find((a) => a.slug === "nust-one")!;
 
 export const metadata: Metadata = {
-  title: "NUST One — Student companion app for NUST",
+  title: "NUST One: Student LMS & Qalam — Student companion app for NUST",
   description: app.description,
   alternates: { canonical: "/nust-one" },
   openGraph: {
-    title: "NUST One — Student companion app for NUST",
+    title: "NUST One: Student LMS & Qalam — Student companion app for NUST",
     description: app.description,
     url: "/nust-one",
   },
